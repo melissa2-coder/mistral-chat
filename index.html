@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clairva — Votre assistant IA au quotidien</title>
+  <meta name="description" content="Résumez un texte, corrigez votre CV, traduisez et posez vos questions grâce à l'intelligence artificielle." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <span class="logo-mark">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="currentColor"/>
+          </svg>
+        </span>
+        Clairva
+      </a>
+      <nav class="nav">
+        <a href="#outils">Outils</a>
+        <a href="#fonctionnement">Fonctionnement</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <button class="btn btn-secondary btn-sm" id="open-settings">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        Clé API
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="badge">✨ Propulsé par l'intelligence artificielle</span>
+        <h1>Gagnez du temps sur vos tâches de tous les jours</h1>
+        <p class="hero-sub">
+          Résumez un long texte, perfectionnez votre CV, traduisez dans plusieurs langues
+          et obtenez des réponses à vos questions — le tout en quelques secondes.
+        </p>
+        <div class="hero-actions">
+          <a href="#outils" class="btn btn-primary">Essayer maintenant</a>
+          <a href="#fonctionnement" class="btn btn-ghost">Comment ça marche ?</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>4</strong><span>outils gratuits</span></div>
+          <div><strong>&lt; 10 s</strong><span>par résultat</span></div>
+          <div><strong>10+</strong><span>langues prises en charge</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tools" id="outils">
+      <div class="container">
+        <div class="section-head">
+          <h2>Nos outils</h2>
+          <p>Choisissez l'outil dont vous avez besoin, collez votre texte, c'est tout.</p>
+        </div>
+
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-tab="resume" role="tab">📄 Résumé</button>
+          <button class="tab" data-tab="cv" role="tab">📝 Correction de CV</button>
+          <button class="tab" data-tab="traduction" role="tab">🌍 Traduction</button>
+          <button class="tab" data-tab="questions" role="tab">💬 Questions</button>
+        </div>
+
+        <!-- Résumé -->
+        <div class="panel active" id="panel-resume">
+          <div class="tool-grid">
+            <div class="card">
+              <label class="label" for="resume-input">Texte à résumer</label>
+              <textarea id="resume-input" placeholder="Collez ici votre article, rapport, cours..." rows="10"></textarea>
+              <div class="field-row">
+                <label class="label" for="resume-length">Longueur du résumé</label>
+                <select id="resume-length">
+                  <option value="court">Court (3–4 phrases)</option>
+                  <option value="moyen" selected>Moyen (1 paragraphe)</option>
+                  <option value="detaille">Détaillé (plusieurs points)</option>
+                </select>
+              </div>
+              <button class="btn btn-primary btn-block run-btn" data-run="resume">Résumer le texte</button>
+            </div>
+            <div class="card result-card">
+              <div class="result-head">
+                <span class="label">Résultat</span>
+                <button class="btn-copy" data-copy-target="resume-output">Copier</button>
+              </div>
+              <div class="result" id="resume-output">Le résumé apparaîtra ici.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CV -->
+        <div class="panel" id="panel-cv">
+          <div class="tool-grid">
+            <div class="card">
+              <label class="label" for="cv-input">Votre CV ou lettre de motivation</label>
+              <textarea id="cv-input" placeholder="Collez ici le texte de votre CV..." rows="10"></textarea>
+              <button class="btn btn-primary btn-block run-btn" data-run="cv">Analyser et corriger</button>
+            </div>
+            <div class="card result-card">
+              <div class="result-head">
+                <span class="label">Corrections &amp; suggestions</span>
+                <button class="btn-copy" data-copy-target="cv-output">Copier</button>
+              </div>
+              <div class="result" id="cv-output">L'analyse de votre CV apparaîtra ici.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Traduction -->
+        <div class="panel" id="panel-traduction">
+          <div class="tool-grid">
+            <div class="card">
+              <label class="label" for="traduction-input">Texte à traduire</label>
+              <textarea id="traduction-input" placeholder="Collez ici le texte à traduire..." rows="8"></textarea>
+              <div class="field-row two">
+                <div>
+                  <label class="label" for="traduction-from">Langue source</label>
+                  <select id="traduction-from">
+                    <option value="auto">Détection automatique</option>
+                    <option value="français">Français</option>
+                    <option value="anglais">Anglais</option>
+                    <option value="espagnol">Espagnol</option>
+                    <option value="allemand">Allemand</option>
+                    <option value="italien">Italien</option>
+                    <option value="arabe">Arabe</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="label" for="traduction-to">Langue cible</label>
+                  <select id="traduction-to">
+                    <option value="anglais" selected>Anglais</option>
+                    <option value="français">Français</option>
+                    <option value="espagnol">Espagnol</option>
+                    <option value="allemand">Allemand</option>
+                    <option value="italien">Italien</option>
+                    <option value="arabe">Arabe</option>
+                  </select>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-block run-btn" data-run="traduction">Traduire</button>
+            </div>
+            <div class="card result-card">
+              <div class="result-head">
+                <span class="label">Traduction</span>
+                <button class="btn-copy" data-copy-target="traduction-output">Copier</button>
+              </div>
+              <div class="result" id="traduction-output">La traduction apparaîtra ici.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Questions -->
+        <div class="panel" id="panel-questions">
+          <div class="chat-wrap card">
+            <div class="chat" id="chat">
+              <div class="msg bot">Bonjour 👋 Posez-moi n'importe quelle question : je réponds en français.</div>
+            </div>
+            <form class="chat-form" id="chat-form">
+              <input type="text" id="chat-input" placeholder="Écrivez votre question..." autocomplete="off" />
+              <button type="submit" class="btn btn-primary">Envoyer</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="how" id="fonctionnement">
+      <div class="container">
+        <div class="section-head">
+          <h2>Comment ça marche ?</h2>
+          <p>Trois étapes simples, aucune compétence technique requise.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">1</span>
+            <h3>Ajoutez votre clé API</h3>
+            <p>Cliquez sur « Clé API » en haut et collez votre clé Mistral ou OpenAI. Elle reste stockée uniquement dans votre navigateur.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">2</span>
+            <h3>Choisissez un outil</h3>
+            <p>Résumé, correction de CV, traduction ou questions-réponses : sélectionnez l'outil adapté à votre besoin.</p>
+          </div>
+          <div class="step">
+            <span class="step-num">3</span>
+            <h3>Obtenez votre résultat</h3>
+            <p>L'IA traite votre demande en quelques secondes. Copiez le résultat en un clic et réutilisez-le.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="container container-narrow">
+        <div class="section-head">
+          <h2>Questions fréquentes</h2>
+        </div>
+        <details>
+          <summary>Mes données sont-elles envoyées quelque part ?</summary>
+          <p>Votre texte est envoyé directement au fournisseur d'IA que vous avez choisi (Mistral ou OpenAI) via votre propre clé API. Ce site ne stocke rien : aucun serveur intermédiaire, aucune base de données.</p>
+        </details>
+        <details>
+          <summary>Où est stockée ma clé API ?</summary>
+          <p>Dans le stockage local de votre navigateur (localStorage). Elle n'est jamais transmise ailleurs qu'au fournisseur d'IA. Vous pouvez la supprimer à tout moment depuis la fenêtre de réglages.</p>
+        </details>
+        <details>
+          <summary>Le site est-il gratuit ?</summary>
+          <p>Oui, le site est entièrement gratuit. L'utilisation de l'IA dépend de l'offre de votre fournisseur : Mistral propose notamment un niveau d'essai gratuit (« experiment »).</p>
+        </details>
+        <details>
+          <summary>Puis-je l'utiliser sur mobile ?</summary>
+          <p>Oui, le site est entièrement responsive et fonctionne sur téléphone, tablette et ordinateur.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="logo small">
+        <span class="logo-mark">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2z" fill="currentColor"/>
+          </svg>
+        </span>
+        Clairva
+      </span>
+      <p>Assistant IA pour le quotidien — résumé, CV, traduction, questions.</p>
+    </div>
+  </footer>
+
+  <!-- Modale clé API -->
+  <div class="modal-overlay" id="settings-modal">
+    <div class="modal">
+      <h3>Réglages de l'IA</h3>
+      <label class="label" for="provider">Fournisseur</label>
+      <select id="provider">
+        <option value="mistral" selected>Mistral AI (essai gratuit disponible)</option>
+        <option value="openai">OpenAI</option>
+      </select>
+      <label class="label" for="api-key">Clé API</label>
+      <input type="password" id="api-key" placeholder="Collez votre clé API ici" />
+      <p class="hint">
+        Mistral : créez une clé sur <strong>console.mistral.ai</strong> → API Keys.<br />
+        OpenAI : créez une clé sur <strong>platform.openai.com</strong> → API Keys.
+      </p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="clear-key">Supprimer la clé</button>
+        <button class="btn btn-primary" id="save-key">Enregistrer</button>
+      </div>
+      <p class="hint" id="settings-status"></p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
